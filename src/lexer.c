@@ -65,12 +65,12 @@ token_js *lexer_next_token(lexer_js *lexer)
             return lexer_parse_id(lexer);
         switch (lexer->c)
         {
-        case '(': return lexer_advance_current(lexer, parenL);
-        case ')': return lexer_advance_current(lexer, parenR);
-        default:
-            printf("[Lexer]: Unexpected character `%c` (%d)\n", lexer->c, (int)lexer->c);
-            exit(1);
-            break;
+            case '(': return lexer_advance_current(lexer, parenL);
+            case ')': return lexer_advance_current(lexer, parenR);
+            default:
+                printf("[Error]: Unexpected character `%c` (%d)\n", lexer->c, (int)lexer->c);
+                exit(1);
+                break;
         }
     }
     return init_token(0, endOfFile);
