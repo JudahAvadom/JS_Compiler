@@ -1,6 +1,7 @@
 #include "include/js.h"
+#include "include/io.h"
 #include <stdio.h>
 
 void compile_file(const char* filename){
-    printf("%s", filename);
+    read_file(filename);
 }
