@@ -5,7 +5,10 @@ typedef struct TOKEN_STRUCT
     char*value;
     enum 
     {
+        tokenID,
         parenL,
+        parenR,
+        statement,
         endOfFile
     } type;
 } token_js;
