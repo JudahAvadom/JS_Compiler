@@ -3,5 +3,5 @@
 #include <stdio.h>
 
 void compile_file(const char* filename){
-    read_file(filename);
+    char* src = read_file(filename);
 }
