@@ -3,6 +3,7 @@
 #include <string.h>
 #include "include/lexer.h"
 #include "include/token.h"
+#include "include/utils.h"
 
 lexer_js *init_lexer(char *src)
 {
@@ -55,6 +56,22 @@ void lexer_skip_whitespace(lexer_js* lexer)
     lexer_advance(lexer);
 }
 
+token_js* lexer_parse_string(lexer_js* lexer)
+{
+    char* value = calloc(1, sizeof(char));
+    lexer_advance(lexer);
+    while (lexer->c != '"')
+    {
+        value = realloc(value, (strlen(value) + 2) * sizeof(char));
+        strcat(value, (char[]){lexer->c, 0});
+        lexer_advance(lexer);
+    }
+    lexer_advance(lexer);
+    char* formatted = str_format(value);
+    free(value);
+    return init_token(formatted, string);
+}
+
 
 token_js *lexer_next_token(lexer_js *lexer)
 {
@@ -65,8 +82,13 @@ token_js *lexer_next_token(lexer_js *lexer)
             return lexer_parse_id(lexer);
         switch (lexer->c)
         {
+            case '.': return lexer_advance_current(lexer, dot);
+            case '{': return lexer_advance_current(lexer, braceL);
+            case '}': return lexer_advance_current(lexer, braceR);
             case '(': return lexer_advance_current(lexer, parenL);
             case ')': return lexer_advance_current(lexer, parenR);
+            case ';': return lexer_advance_current(lexer, semi);
+            case '"': return lexer_parse_string(lexer);
             default:
                 printf("[Error]: Unexpected character `%c` (%d)\n", lexer->c, (int)lexer->c);
                 exit(1);

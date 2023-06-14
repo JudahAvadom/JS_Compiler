@@ -14,8 +14,12 @@ token_js* init_token(char* value, int type)
 static const char* token_type_to_str(int type){
     switch (type)
     {
-        case parenR: return "parenR";
+        case braceL: return "braceL";
+        case braceR: return "braceR";
+        case dot: return "dot";
         case parenL: return "parenL";
+        case parenR: return "parenR";
+        case semi: return "semi";
         case tokenID: return "tokenID";
     }
     return "not_stringable";

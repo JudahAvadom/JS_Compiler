@@ -13,7 +13,13 @@ This command will compile the file
 
 ## Token definition
 
-* endOfFile = '\0'
-* parenL = '('
-* parenR = ')'
-* tokenID = alphanumeric value
+```c
+    enum 
+    {
+        endOfFile,
+        parenL,
+        parenR,
+        statement,
+        tokenID,
+    } type;
+```

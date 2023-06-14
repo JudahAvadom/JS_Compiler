@@ -22,6 +22,8 @@ token_js* lexer_advance_current(lexer_js* lexer, int type);
 
 void lexer_skip_whitespace(lexer_js* lexer);
 
+token_js* lexer_parse_string(lexer_js* lexer);
+
 token_js* lexer_next_token(lexer_js* lexer);
 
 #endif
