@@ -9,3 +9,8 @@ lexer_js* init_lexer(char* src){
     lexer->c = src[lexer->i];
     return lexer;
 }
+
+token_js* lexer_next_token(lexer_js* lexer)
+{
+    return init_token(0, endOfFile);
+}
