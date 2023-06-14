@@ -7,10 +7,12 @@
 void compile(char* src){
     lexer_js* lexer = init_lexer(src);
     token_js* tok = 0;
+    printf("{\n");
     while ((tok = lexer_next_token(lexer))->type != endOfFile)
     {
-        printf("TOK(%S) (%d)\n", tok->value, tok->type);
+        printf("%s\n", token_to_str(tok));
     }
+    printf("}\n");
 }
 
 void compile_file(const char* filename){

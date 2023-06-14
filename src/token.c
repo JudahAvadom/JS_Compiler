@@ -10,3 +10,19 @@ token_js* init_token(char* value, int type)
     token->type = type;
     return token;
 }
+
+static const char* token_type_to_str(int type){
+    switch (type)
+    {
+        case parenL: return "parenL";
+    }
+    return "not_stringable";
+}
+
+char* token_to_str(token_js* token){
+    const char* type_str = token_type_to_str(token->type);
+    const char* template = "\t type: %s, int_type: %d, value: `%s`";
+    char* str = calloc(strlen(type_str) + strlen(template) + 8, sizeof(char));
+    sprintf(str, template, type_str, token->type, token->value);
+    return str;
+}
