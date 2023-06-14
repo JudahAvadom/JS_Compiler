@@ -16,10 +16,15 @@ This command will compile the file
 ```c
     enum 
     {
+        braceL,
+        braceR,
+        dot,
         endOfFile,
         parenL,
         parenR,
+        semi,
         statement,
+        string,
         tokenID,
     } type;
 ```
