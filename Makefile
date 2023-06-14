@@ -1,2 +1,2 @@
 gcc:
-	gcc *.c -o js.exe
+	gcc src/*.c -o js.exe
