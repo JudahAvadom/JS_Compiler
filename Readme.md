@@ -13,7 +13,7 @@ This command will compile the file
 
 ## Token definition
 
-endOfFile = '\0'
-parenL = '('
-parenR = ')'
-tokenID = alphanumeric value
+* endOfFile = '\0'
+* parenL = '('
+* parenR = ')'
+* tokenID = alphanumeric value
